@@ -16,6 +16,8 @@ import com.prueba.tinyshopapp.domain.Address
 import com.prueba.tinyshopapp.ui.viewmodel.newaddress.NewAddressViewModel
 import com.prueba.tinyshopapp.ui.viewmodel.newaddress.NewAddressViewModelFactory
 import com.prueba.tinyshopapp.utils.collectLifecycleFlow
+import com.prueba.tinyshopapp.utils.hasDigits
+import com.prueba.tinyshopapp.utils.validateZipcode
 
 class NewAddressFragment : Fragment() {
 
@@ -78,21 +80,21 @@ class NewAddressFragment : Fragment() {
             binding.addressTextLayout.error = null
         }
 
-        if (city.isBlank() || city.length < 2) {
+        if (city.isBlank() || city.length < 2 || city.hasDigits()) {
             binding.cityTextLayout.error = "Invalid city"
             isValid = false
         } else {
             binding.cityTextLayout.error = null
         }
 
-        if (state.isBlank() || state.length < 2) {
+        if (state.isBlank() || state.length < 2 || state.hasDigits()) {
             binding.stateTextLayout.error = "Invalid state"
             isValid = false
         } else {
             binding.stateTextLayout.error = null
         }
 
-        if (zipCode.isBlank() || zipCode.length < 5) {
+        if (!validateZipcode(zipCode)) {
             binding.zipcodeTextLayout.error = "Invalid zip code"
             isValid = false
         } else {
