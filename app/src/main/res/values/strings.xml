@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">TinyShop</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="no_customers">You have no customers</string>
+    <string name="add_new_customer">Add new customer</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_address">Address</string>
+    <string name="hint_city">City</string>
+    <string name="hint_state">State</string>
+    <string name="hint_zip_code">ZIP Code</string>
+    <string name="united_states">United States</string>
+    <string name="formatted_address">%s, %s, %s, %s, %s</string>
+    <string name="button_save">Save</string>
+    <string name="new_customer">New Customer</string>
+    <string name="address">Address</string>
+    <string name="add_address">Add address</string>
+    <string name="new_address">New address</string>
+    <string name="delete_customer">Delete customer</string>
+    <string name="delete_dialog_message">This action cannot be undone.</string>
+    <string name="delete_dialog_title">Delete this customer?</string>
+    <string name="ok">Yes</string>
+    <string name="cancel">No</string>
+</resources>

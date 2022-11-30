@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="customer"
+            type="com.prueba.tinyshopapp.domain.Customer" />
+
+        <variable
+            name="clickListener"
+            type="com.prueba.tinyshopapp.ui.view.CustomerItemListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{()-> clickListener.onClick(customer)}"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/customer_icon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ll_customer_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/customer_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_normal"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{customer.name}"
+            android:textSize="@dimen/big_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/customer_icon"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="John" />
+
+        <TextView
+            android:id="@+id/customer_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_normal"
+            android:ellipsize="end"
+            android:lines="2"
+            android:textSize="@dimen/small_text"
+            app:customerAddress="@{customer}"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/customer_icon"
+            app:layout_constraintTop_toBottomOf="@id/customer_name"
+            tools:text="105 KROME AVE, MIAMI, FLORIDA, 33185-3700, United States" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
