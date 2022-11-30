@@ -78,30 +78,38 @@ class NewCustomerFragment : Fragment() {
         if (address.isBlank() || address.length < 5) {
             binding.addressTextLayout.error = "Invalid address"
             isValid = false
+        } else {
+            binding.addressTextLayout.error = null
         }
 
         if (city.isBlank() || city.length < 2) {
             binding.cityTextLayout.error = "Invalid city"
             isValid = false
+        } else {
+            binding.cityTextLayout.error = null
         }
 
         if (state.isBlank() || state.length < 2) {
             binding.stateTextLayout.error = "Invalid state"
             isValid = false
+        } else {
+            binding.stateTextLayout.error = null
         }
 
         if (zipCode.isBlank() || zipCode.length < 5) {
             binding.zipcodeTextLayout.error = "Invalid zip code"
             isValid = false
+        } else {
+            binding.zipcodeTextLayout.error = null
         }
         return isValid
     }
 
     private fun saveCustomer(newCustomerViewModel: NewCustomerViewModel) {
         val name = binding.nameEditText.text.toString()
-        val address = binding.addressEditText.text.toString()
-        val city = binding.cityEditText.text.toString()
-        val state = binding.stateEditText.text.toString()
+        val address = binding.addressEditText.text.toString().uppercase()
+        val city = binding.cityEditText.text.toString().uppercase()
+        val state = binding.stateEditText.text.toString().uppercase()
         val zipCode = binding.zipcodeEditText.text.toString()
         val country = binding.countryEditText.text.toString()
 
