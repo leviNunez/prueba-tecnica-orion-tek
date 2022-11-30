@@ -102,9 +102,9 @@ class NewAddressFragment : Fragment() {
     }
 
     private fun saveAddress(newAddressViewModel: NewAddressViewModel) {
-        val address = binding.addressEditText.text.toString()
-        val city = binding.cityEditText.text.toString()
-        val state = binding.stateEditText.text.toString()
+        val address = binding.addressEditText.text.toString().uppercase()
+        val city = binding.cityEditText.text.toString().uppercase()
+        val state = binding.stateEditText.text.toString().uppercase()
         val zipCode = binding.zipcodeEditText.text.toString()
         val country = binding.countryEditText.text.toString()
 
