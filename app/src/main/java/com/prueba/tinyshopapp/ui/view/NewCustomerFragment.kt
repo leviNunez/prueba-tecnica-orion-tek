@@ -1,11 +1,11 @@
 package com.prueba.tinyshopapp.ui.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.prueba.tinyshopapp.R
@@ -18,6 +18,8 @@ import com.prueba.tinyshopapp.domain.Address
 import com.prueba.tinyshopapp.ui.viewmodel.newcustomer.NewCustomerViewModel
 import com.prueba.tinyshopapp.ui.viewmodel.newcustomer.NewCustomerViewModelFactory
 import com.prueba.tinyshopapp.utils.collectLifecycleFlow
+import com.prueba.tinyshopapp.utils.hasDigits
+import com.prueba.tinyshopapp.utils.validateZipcode
 
 class NewCustomerFragment : Fragment() {
 
@@ -69,7 +71,7 @@ class NewCustomerFragment : Fragment() {
         val state = binding.stateEditText.text.toString()
         val zipCode = binding.zipcodeEditText.text.toString()
 
-        if (name.isBlank() || name.length < 2) {
+        if (name.isBlank() || name.length < 2 || name.hasDigits()) {
             binding.nameTextLayout.error = "Invalid name"
             isValid = false
         } else {
@@ -82,21 +84,21 @@ class NewCustomerFragment : Fragment() {
             binding.addressTextLayout.error = null
         }
 
-        if (city.isBlank() || city.length < 2) {
+        if (city.isBlank() || city.length < 2 || city.hasDigits()) {
             binding.cityTextLayout.error = "Invalid city"
             isValid = false
         } else {
             binding.cityTextLayout.error = null
         }
 
-        if (state.isBlank() || state.length < 2) {
+        if (state.isBlank() || state.length < 2 || state.hasDigits()) {
             binding.stateTextLayout.error = "Invalid state"
             isValid = false
         } else {
             binding.stateTextLayout.error = null
         }
 
-        if (zipCode.isBlank() || zipCode.length < 5) {
+        if (!validateZipcode(zipCode)) {
             binding.zipcodeTextLayout.error = "Invalid zip code"
             isValid = false
         } else {
@@ -130,5 +132,7 @@ class NewCustomerFragment : Fragment() {
         )
         newCustomerViewModel.saveCustomer(newCustomer)
     }
+
+
 
 }
