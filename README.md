@@ -18,12 +18,12 @@ English:
 
 Task: You want to have control of all customers belonging to company X, where each customer can have N number of addresses. With your development knowledge you are requested to create a computer solution for this problem.
 
-To solve this problem, I developed an application that allows basic CRUD operations: You can create, read, update and delete clients through a local Room (SQLite) database. No remote databases or internet access (back-end) are used.
+To solve this problem, I developed an application that allows basic CRUD operations: You can create, read, update and delete customers through a local Room (SQLite) database. No remote databases or internet access (back-end) are used.
 
-Each customer must have a name and one or more addresses according to the requirements. Once the client is created, it can be updated to add more addresses.
+Each customer must have a name and one or more addresses according to the requirements. Once the customer is created, it can be updated to add more addresses.
 
-The main screen (Home) shows a list with all added clients. Tapping on one of the customers in the list will display their details on another screen.
+The main screen (Home) shows a list with all added customers. Tapping on one of the customers in the list will display their details on another screen.
 
-Once inside the customer details, you will have the option to add another address, as well as delete the customer from the database.
+Once inside the customer details screen, there will be an option to add other addresses, as well as delete the customer from the database.
 
 Requirements to run the app: Android Studio Chipmunk is needed.
