@@ -11,23 +11,21 @@ import kotlinx.coroutines.launch
 
 class CustomerDetailViewModel(
     private val repository: CustomerRepository,
-    private val state: SavedStateHandle
+    state: SavedStateHandle
 ) :
     ViewModel() {
+    private val _customer = MutableLiveData<Customer>()
     private val _navigateToNewAddress = MutableSharedFlow<Long>()
     private val _navigateToHome = MutableSharedFlow<Int>()
 
-    private val customer = MediatorLiveData<Customer>()
-
-    fun getCustomer() = customer
-
+    val customer: LiveData<Customer> get() = _customer
     val navigateToNewAddress = _navigateToNewAddress.asSharedFlow()
     val navigateToHome = _navigateToHome.asSharedFlow()
 
     init {
-        viewModelScope.launch {
-            state.get<Long>(CUSTOMER_ID)?.let { id ->
-                customer.addSource(repository.getCustomerById(id), customer::setValue)
+        state.get<Long>(CUSTOMER_ID)?.let { id ->
+            viewModelScope.launch {
+                _customer.value = repository.getCustomerById(id)
             }
         }
     }
@@ -43,13 +41,7 @@ class CustomerDetailViewModel(
     fun onDeleteCustomer() {
         viewModelScope.launch {
             customer.value?.let { customer ->
-                val toDelete = CustomerEntity(
-                    id = customer.id,
-                    name = customer.name,
-                    addressList = AddressList(addresses = customer.addresses)
-
-                )
-                val result = repository.deleteCustomer(toDelete)
+                val result = repository.deleteCustomer(customer.id)
                 _navigateToHome.emit(result)
             }
         }

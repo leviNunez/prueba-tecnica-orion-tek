@@ -11,7 +11,7 @@ interface CustomerRepository {
 
     suspend fun updateCustomer(customer: CustomerEntity): Long
 
-    suspend fun deleteCustomer(customer: CustomerEntity): Int
+    suspend fun deleteCustomer(customerId: Long): Int
 
-    fun getCustomerById(customerId: Long): LiveData<Customer>
+    suspend fun getCustomerById(customerId: Long): Customer
 }

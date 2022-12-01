@@ -55,9 +55,6 @@ class NewAddressFragment : Fragment() {
                 saveAddress(newAddressViewModel)
             }
         }
-        newAddressViewModel.getCustomer().observe(viewLifecycleOwner) {
-
-        }
 
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = newAddressViewModel

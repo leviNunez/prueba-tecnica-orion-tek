@@ -46,7 +46,7 @@ class CustomerDetailFragment : Fragment() {
 
         binding.addressList.adapter = adapter
 
-        customerDetailViewModel.getCustomer().observe(viewLifecycleOwner) { customer ->
+        customerDetailViewModel.customer.observe(viewLifecycleOwner) { customer ->
             customer?.let {
                 adapter.addFooterAndSubmitList(it.addresses)
             }
@@ -60,7 +60,7 @@ class CustomerDetailFragment : Fragment() {
                     )
                 )
         }
-        collectLifecycleFlow(customerDetailViewModel.navigateToHome) { customerId ->
+        collectLifecycleFlow(customerDetailViewModel.navigateToHome) {
             this.findNavController()
                 .navigate(
                     CustomerDetailFragmentDirections.actionCustomerDetailFragmentToHomeFragment()
