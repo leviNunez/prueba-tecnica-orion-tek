@@ -80,7 +80,7 @@ class CustomerDatabaseTest {
     @Throws(Exception::class)
     fun deleteCustomer() = runTest() {
         customerDao.insertCustomer(fakeCustomer)
-        customerDao.deleteCustomer(fakeCustomer)
+        customerDao.deleteCustomerById(fakeCustomer)
 
         val allCustomers = customerDao.getAllCustomers().getOrAwaitValue()
 

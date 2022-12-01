@@ -156,6 +156,7 @@
             android:layout_marginHorizontal="@dimen/spacing_normal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_normal"
             android:text="@string/button_save"
             app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

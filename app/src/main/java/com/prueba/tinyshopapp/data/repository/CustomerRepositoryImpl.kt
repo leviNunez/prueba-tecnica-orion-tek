@@ -22,12 +22,11 @@ class CustomerRepositoryImpl(private val customerDao: CustomerDatabaseDao) : Cus
         return customerDao.updateCustomer(customer = customer)
     }
 
-    override suspend fun deleteCustomer(customer: CustomerEntity): Int {
-        return customerDao.deleteCustomer(customer = customer)
+    override suspend fun deleteCustomer(customerId: Long): Int {
+        return customerDao.deleteCustomerById(key = customerId)
     }
 
-    override fun getCustomerById(customerId: Long): LiveData<Customer> =
-        Transformations.map(customerDao.getCustomerById(key = customerId)) { customer ->
-            customer.asDomainModel()
-        }
+    override suspend fun getCustomerById(customerId: Long): Customer =
+        customerDao.getCustomerById(key = customerId).asDomainModel()
+
 }

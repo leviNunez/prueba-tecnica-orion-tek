@@ -11,12 +11,12 @@ interface CustomerDatabaseDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateCustomer(customer: CustomerEntity): Long
 
-    @Delete
-    suspend fun deleteCustomer(customer: CustomerEntity): Int
+    @Query("delete from customers_table where id = :key")
+    suspend fun deleteCustomerById(key: Long): Int
 
-    @Query("select * from customer_table")
+    @Query("select * from customers_table order by id desc")
     fun getAllCustomers(): LiveData<List<CustomerEntity>>
 
-    @Query("select * from customer_table where id = :key")
-    fun getCustomerById(key: Long): LiveData<CustomerEntity>
+    @Query("select * from customers_table where id = :key")
+    suspend fun getCustomerById(key: Long): CustomerEntity
 }

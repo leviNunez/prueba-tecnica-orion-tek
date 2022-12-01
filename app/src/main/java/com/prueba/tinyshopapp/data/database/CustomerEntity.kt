@@ -8,7 +8,7 @@ import com.google.gson.Gson
 import com.prueba.tinyshopapp.domain.Address
 import com.prueba.tinyshopapp.domain.Customer
 
-@Entity(tableName = "customer_table")
+@Entity(tableName = "customers_table")
 data class CustomerEntity(
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0L,
