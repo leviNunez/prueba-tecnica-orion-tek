@@ -12,6 +12,8 @@ La pantalla principal (Home) muestra una lista con todos los clientes agregados.
 
 Una vez dentro los detalles del cliente, se tendrá la opción de agregar otra dirección, así como también de borrar el cliente de la base de datos.
 
+Requisitos para correr la app: se necesita Android Studio Chipmunk.
+
 English:
 
 Task: You want to have control of all customers belonging to company X, where each customer can have N number of addresses. With your development knowledge you are requested to create a computer solution for this problem.
@@ -23,3 +25,5 @@ Each customer must have a name and one or more addresses according to the requir
 The main screen (Home) shows a list with all added clients. Tapping on one of the customers in the list will display their details on another screen.
 
 Once inside the customer details, you will have the option to add another address, as well as delete the customer from the database.
+
+Requirements to run the app: Android Studio Chipmunk is needed.
